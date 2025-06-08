@@ -1,3 +1,3 @@
-module github.com/Caezarr-OSS/test-api
+module github.com/Ange-Cesari/test-api
 
-go 1.24.3
+go 1.21
