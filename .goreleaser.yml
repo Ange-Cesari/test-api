@@ -21,7 +21,6 @@ builds:
       - -X main.CommitSHA={{`{{.Commit}}`}}
       - -X main.BuildDate={{`{{.Date}}`}}
     binary: "test-api"
-    dir: "test-api_{{.Os}}_{{.Arch}}"
 
 archives:
   - format: tar.gz
@@ -51,8 +50,9 @@ checksum:
 snapshot:
   name_template: "{{`{{ incpatch .Version }}`}}-next"
 
-sboms:
-  - id: "test-api-sbom"
-    artifacts: binary
-    documents:
-      - "test-api_{{.Version}}_{{.Os}}_{{.Arch}}_sbom.spdx.json"
+# SBOM désactivé temporairement pour éviter les erreurs
+# sboms:
+#   - id: "test-api-sbom"
+#     artifacts: binary
+#     documents:
+#       - "test-api_{{.Version}}_{{.Os}}_{{.Arch}}_sbom.spdx.json"
