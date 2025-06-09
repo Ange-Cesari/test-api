@@ -20,7 +20,7 @@ builds:
       - -X main.Version={{`{{.Version}}`}}
       - -X main.CommitSHA={{`{{.Commit}}`}}
       - -X main.BuildDate={{`{{.Date}}`}}
-    binary: "{{`{{ .ProjectName }}`}}"
+    binary: "test-api"
 
 archives:
   - format: tar.gz
