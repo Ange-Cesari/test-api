@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
 
       - name: Generate Changelog
-        uses: github-changelog-generator/github-changelog-generator@v1.16.4
+        uses: heinrichreimer/github-changelog-generator-action@v2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: CHANGELOG.md

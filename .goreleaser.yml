@@ -1,4 +1,4 @@
-project_name: test-api
+project_name: {{ .ProjectName }}
 
 before:
   hooks:
@@ -14,24 +14,30 @@ builds:
     goarch:
       - amd64
       - arm64
-    main: ./cmd/test-api
+    main: ./cmd/{{ .ProjectName }}
     ldflags:
       - -s -w
-      - -X main.Version={{ .Version }}
-      - -X main.CommitSHA={{ .Commit }}
-      - -X main.BuildDate={{ .Date }}
-    binary: test-api
+      - -X main.Version={{`{{.Version}}`}}
+      - -X main.CommitSHA={{`{{.Commit}}`}}
+      - -X main.BuildDate={{`{{.Date}}`}}
+    binary: {{ .ProjectName }}
 
 archives:
   - format: tar.gz
-    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    name_template: >-
+      {{`{{ .ProjectName }}_`}}
+      {{`{{ .Version }}_`}}
+      {{`{{ .Os }}_`}}
+      {{`{{ .Arch }}`}}
     format_overrides:
       - goos: windows
         format: zip
     files:
       - README.md
-      - LICENSE
-      - docs/*
+      # LICENSE file is optional but recommended
+      # - LICENSE
+      # Documentation directory is optional
+      # - docs/*
 
 changelog:
   sort: asc
@@ -46,10 +52,10 @@ checksum:
   name_template: 'checksums.txt'
 
 snapshot:
-  name_template: "{{ incpatch .Version }}-next"
+  name_template: "{{`{{ incpatch .Version }}`}}-next"
 
 sboms:
-  - id: "{{ .ProjectName }}-sbom"
+  - id: {{`{{ .ProjectName }}`}}-sbom
     artifacts: binary
     documents:
-      - "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}_sbom.spdx.json"
+      - "{{`{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}_sbom.spdx.json`}}"
