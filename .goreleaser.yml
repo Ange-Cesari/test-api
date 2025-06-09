@@ -21,6 +21,7 @@ builds:
       - -X main.CommitSHA={{`{{.Commit}}`}}
       - -X main.BuildDate={{`{{.Date}}`}}
     binary: "test-api"
+    dir: "test-api_{{.Os}}_{{.Arch}}"
 
 archives:
   - format: tar.gz
