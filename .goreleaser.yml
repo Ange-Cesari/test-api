@@ -51,7 +51,7 @@ snapshot:
   name_template: "{{`{{ incpatch .Version }}`}}-next"
 
 sboms:
-  - id: "{{`{{ .ProjectName }}`}}-sbom"
+  - id: "test-api-sbom"
     artifacts: binary
     documents:
-      - "{{`{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}_sbom.spdx.json`}}"
+      - "test-api_{{.Version}}_{{.Os}}_{{.Arch}}_sbom.spdx.json"
