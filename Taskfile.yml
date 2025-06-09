@@ -13,6 +13,36 @@ vars:
   MAIN_PACKAGE: ./cmd/test-api
 
 tasks:
+
+  build-darwin-arm64:
+    desc: Build for darwin/arm64
+    cmds:
+      - go build -o {{.BINARY_NAME}}-darwin-arm64 {{.MAIN_PACKAGE}}
+    env:
+      GOOS: darwin
+      GOARCH: arm64
+    generates:
+      - {{.BINARY_NAME}}-darwin-arm64{{exeExt}}
+
+  build-windows-arm64:
+    desc: Build for windows/arm64
+    cmds:
+      - go build -o {{.BINARY_NAME}}-windows-arm64 {{.MAIN_PACKAGE}}
+    env:
+      GOOS: windows
+      GOARCH: arm64
+    generates:
+      - {{.BINARY_NAME}}-windows-arm64{{exeExt}}
+
+  build-windows-amd64:
+    desc: Build for windows/amd64
+    cmds:
+      - go build -o {{.BINARY_NAME}}-windows-amd64 {{.MAIN_PACKAGE}}
+    env:
+      GOOS: windows
+      GOARCH: amd64
+    generates:
+      - {{.BINARY_NAME}}-windows-amd64{{exeExt}}
   build:
     desc: Build for the current platform
     cmds:
