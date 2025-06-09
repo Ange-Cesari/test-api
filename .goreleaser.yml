@@ -14,7 +14,7 @@ builds:
     goarch:
       - amd64
       - arm64
-    main: "./cmd/{{`{{ .ProjectName }}`}}"
+    main: "./cmd/test-api"
     ldflags:
       - -s -w
       - -X main.Version={{`{{.Version}}`}}
