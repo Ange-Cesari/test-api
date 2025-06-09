@@ -1,4 +1,4 @@
-project_name: {{ .ProjectName }}
+project_name: "{{`{{ .ProjectName }}`}}"
 
 before:
   hooks:
@@ -14,13 +14,13 @@ builds:
     goarch:
       - amd64
       - arm64
-    main: ./cmd/{{ .ProjectName }}
+    main: "./cmd/{{`{{ .ProjectName }}`}}"
     ldflags:
       - -s -w
       - -X main.Version={{`{{.Version}}`}}
       - -X main.CommitSHA={{`{{.Commit}}`}}
       - -X main.BuildDate={{`{{.Date}}`}}
-    binary: {{ .ProjectName }}
+    binary: "{{`{{ .ProjectName }}`}}"
 
 archives:
   - format: tar.gz
