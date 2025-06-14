@@ -56,12 +56,12 @@ checksum:
 
 # Generate Software Bill of Materials (SBOM) for all binaries
 sboms:
-  - artifacts: archive
+  - id: test-api-sbom
+    artifacts: archive
     documents:
-      - "${.ProjectName}_{{`{{ .Version }}_{{ .Os }}_{{ .Arch }}_sbom.spdx.json`}}"
+      - "test-api_{{ .Version }}_{{ .Os }}_{{ .Arch }}_sbom.spdx.json"
     cmd: syft
-    args: ["$artifact", "--file", "${.ProjectName}_{{`{{ .Version }}_{{ .Os }}_{{ .Arch }}_sbom.spdx.json`}}", "--output", "spdx-json"]
 
 snapshot:
-  name_template: "{{`{{ incpatch .Version }}`}}-next"
+  name_template: "{{ incpatch .Version }}-next"
 
