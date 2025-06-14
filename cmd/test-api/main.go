@@ -37,4 +37,4 @@ func main() {
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatalf("Server failed: %v", err)
 	}
-}
+}// Add API test comment
