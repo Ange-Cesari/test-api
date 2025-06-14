@@ -1,4 +1,4 @@
-project_name: "{{`{{ .ProjectName }}`}}"
+project_name: test-api
 
 before:
   hooks:
@@ -14,17 +14,23 @@ builds:
     goarch:
       - amd64
       - arm64
-    main: "./cmd/test-api"
+
+    # Configuration for an application
+    # Find the main entry point by priority order
+    
+    main: ./cmd/test-api   # Use the specified path if available
+    
     ldflags:
       - -s -w
       - -X main.Version={{`{{.Version}}`}}
       - -X main.CommitSHA={{`{{.Commit}}`}}
       - -X main.BuildDate={{`{{.Date}}`}}
-    binary: "test-api"
+    binary: test-api
+
 
 archives:
   - format: tar.gz
-    name_template: "test-api_{{.Version}}_{{.Os}}_{{.Arch}}"
+    name_template: "myproject_{{`{{ .Version }}_{{ .Os }}_{{ .Arch }}`}}"
     format_overrides:
       - goos: windows
         format: zip
@@ -46,13 +52,16 @@ changelog:
 
 checksum:
   name_template: 'checksums.txt'
+  algorithm: sha256
+
+# Generate Software Bill of Materials (SBOM) for all binaries
+sboms:
+  - artifacts: archive
+    documents:
+      - "${.ProjectName}_{{`{{ .Version }}_{{ .Os }}_{{ .Arch }}_sbom.spdx.json`}}"
+    cmd: syft
+    args: ["$artifact", "--file", "${.ProjectName}_{{`{{ .Version }}_{{ .Os }}_{{ .Arch }}_sbom.spdx.json`}}", "--output", "spdx-json"]
 
 snapshot:
   name_template: "{{`{{ incpatch .Version }}`}}-next"
 
-# SBOM désactivé temporairement pour éviter les erreurs
-# sboms:
-#   - id: "test-api-sbom"
-#     artifacts: binary
-#     documents:
-#       - "test-api_{{.Version}}_{{.Os}}_{{.Arch}}_sbom.spdx.json"
