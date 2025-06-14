@@ -30,7 +30,7 @@ builds:
 
 archives:
   - format: tar.gz
-    name_template: "myproject_{{`{{ .Version }}_{{ .Os }}_{{ .Arch }}`}}"
+    name_template: "test-api_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     format_overrides:
       - goos: windows
         format: zip
