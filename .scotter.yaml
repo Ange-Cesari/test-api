@@ -1,0 +1,4 @@
+language: golang
+module: github.com/Caezarr-OSS/test-api
+name: test-api
+type: api

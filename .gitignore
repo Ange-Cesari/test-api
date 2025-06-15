@@ -1,0 +1,26 @@
+# Binaires compilés
+test-api
+/test-api
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Fichiers d'output de tests
+*.test
+*.out
+
+# Fichiers Go spécifiques
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Fichiers IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Fichiers système
+.DS_Store
+Thumbs.db
