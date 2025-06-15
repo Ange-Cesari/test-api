@@ -1,6 +1,8 @@
 # Binaires compilés
 test-api
 /test-api
+server
+/server
 *.exe
 *.exe~
 *.dll
