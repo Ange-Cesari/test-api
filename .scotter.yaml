@@ -5,11 +5,9 @@ platforms:
     - linux
     - darwin
     - windows
-architectures:
-    - amd64
-    - arm64
+architectures: []
 release_assets:
     - checksum
-    - sbom
     - archive
+    - sbom
 ci_provider: github
