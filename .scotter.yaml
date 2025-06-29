@@ -1,4 +1,15 @@
-language: golang
-module: github.com/Caezarr-OSS/test-api
-name: test-api
-type: api
+project_name: test-api
+project_type: api
+language: go
+platforms:
+    - linux
+    - darwin
+    - windows
+architectures:
+    - amd64
+    - arm64
+release_assets:
+    - checksum
+    - sbom
+    - archive
+ci_provider: github
